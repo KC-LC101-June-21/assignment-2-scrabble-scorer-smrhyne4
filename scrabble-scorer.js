@@ -47,17 +47,16 @@ function simpleScore (word) {
 };  
 
 function vowelBonusScore (word) {
-  word = word.toUpperCase();
-  vowelBonusScoreArray = word.split('');
-  scrabblePoints= 0
-  for (let i = 0; i < vowelBonusScoreArray.length; i++) {
-    if (vowelBonusScoreArray[i] === 'A', 'E', 'I', 'O', 'U') {
-      scrabblePoints += 3
+  let score = 0;
+  let vowels = 'aeiou';
+  for (let i = 0; i < word.length; i++){
+    if (vowels.includes(word[i].toLowerCase())){
+      score += 3;
     } else {
-      scrabblePoints += 1
+      score ++;
     }
-  }
-  return scrabblePoints
+  }  
+  return score;
 };
 
 function scrabbleScore (word) {
@@ -71,13 +70,13 @@ function scrabbleScore (word) {
 
 let simpleScoreObj = {
   name: 'Simple Score',
-  description: "Each letter is worth 1 point.",
+  description: "One point per character.",
   scoringFunction: simpleScore
 };
   
 let vowelBonusScoreObj = {
   name: "Bonus Vowels",
-  description: "Vowels are 3 points.",
+  description: "Vowels are worth 3 points.",
   scoringFunction: vowelBonusScore
 }
 
@@ -118,6 +117,17 @@ function runProgram() {
    initialPrompt();
    scorerPrompt();
 }
+
+/*word = word.toUpperCase();
+  vowelBonusScoreArray = word.split('');
+  scrabblePoints = 0
+  for (let i = 0; i < vowelBonusScoreArray.length; i++) {
+    if (vowelBonusScoreArray[i] === 'A', 'E', 'I', 'O', 'U') {
+      scrabblePoints += 3
+    } else {
+      scrabblePoints ++
+    }
+  }*/
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
